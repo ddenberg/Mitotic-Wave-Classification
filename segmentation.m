@@ -1,6 +1,7 @@
 
 % Exported from ilastik:
 probability_file = 'F:\Shvartsman_lab\Segmentation_Liu\20230629\131_380\SUM_20230605_1001-1_Probabilities.h5';
+output_segmentation_file = 'segmentation_chunk1.h5';
 
 prob = squeeze(h5read(probability_file, '/exported_data'));
 
@@ -24,5 +25,5 @@ L(~BW) = 0;
 
 % Save to h5
 chunksize = [64, 64, 1];
-h5create('segmentation.h5', '/exported_data', size(L), 'ChunkSize', chunksize, 'Datatype', 'uint16', 'Deflate', 1);
-h5write('segmentation.h5', '/exported_data', L);
+h5create(output_segmentation_file, '/exported_data', size(L), 'ChunkSize', chunksize, 'Datatype', 'uint16', 'Deflate', 1);
+h5write(output_segmentation_file, '/exported_data', L);
